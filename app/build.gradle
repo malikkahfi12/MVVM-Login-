@@ -33,6 +33,9 @@ android {
         sourceCompatibility = "1.8"
         targetCompatibility = "1.8"
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 
 }
 
@@ -69,6 +72,10 @@ dependencies {
 
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+    // KodeIn
+    implementation "org.kodein.di:kodein-di-generic-jvm:6.5.4"
+    implementation "org.kodein.di:kodein-di-framework-android-x:6.5.4"
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
