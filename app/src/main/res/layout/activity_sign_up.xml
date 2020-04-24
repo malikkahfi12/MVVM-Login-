@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.mvvmsampleapp.ui.auth.AuthViewModel" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/root_layout"
         android:layout_width="match_parent"
@@ -38,36 +44,46 @@
                     app:fontFamily="sans-serif-condensed" />
 
                 <EditText
+                    android:text="@={viewmodel.name}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="12dp"
                     android:drawableLeft="@drawable/ic_email"
                     android:drawablePadding="16dp"
-                    android:hint="Username"
+                    android:hint="Name"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
                     android:inputType="text"
                     android:padding="12dp" />
 
                 <EditText
+                    android:text="@={viewmodel.email}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="12dp"
                     android:drawableLeft="@drawable/ic_lock"
                     android:drawablePadding="16dp"
                     android:hint="Email"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
                     android:inputType="textEmailAddress"
                     android:padding="12dp" />
 
                 <EditText
+                    android:text="@={viewmodel.password}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="12dp"
                     android:drawableLeft="@drawable/ic_lock"
                     android:drawablePadding="16dp"
                     android:hint="password"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
                     android:inputType="textPassword"
                     android:padding="12dp" />
 
                 <EditText
+                    android:text="@={viewmodel.passwordConfirm}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="12dp"
@@ -75,6 +91,8 @@
                     android:drawablePadding="16dp"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
                     android:padding="12dp" />
 
                 <TextView
@@ -88,13 +106,15 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Sign In"
+                    android:text="Sign up"
+                    android:onClick="@{viewmodel::onSignupButtonClick}"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white" />
 
             </LinearLayout>
 
             <TextView
+                android:onClick="@{viewmodel::onLogin}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/linearLayout2"
