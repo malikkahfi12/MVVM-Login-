@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmsampleapp.data.repository.UserRepository
 
+@Suppress("UNCHECKED_CAST")
 class ProfileViewModelFactory(
     private val repository: UserRepository
 ) : ViewModelProvider.NewInstanceFactory() {
