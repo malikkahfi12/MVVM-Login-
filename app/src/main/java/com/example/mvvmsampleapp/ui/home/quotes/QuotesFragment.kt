@@ -13,11 +13,8 @@ import com.example.mvvmsampleapp.data.db.entity.Quote
 import com.example.mvvmsampleapp.util.Coroutines
 import com.example.mvvmsampleapp.util.hide
 import com.example.mvvmsampleapp.util.show
-import com.example.mvvmsampleapp.util.toast
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.item_quote.*
 import kotlinx.android.synthetic.main.quotes_fragment.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
@@ -27,7 +24,7 @@ class QuotesFragment : Fragment(), KodeinAware {
 
     override val kodein by kodein()
 
-    private val factory :QuotesViewModelFactory by instance()
+    private val factory: QuotesViewModelFactory by instance()
     private lateinit var viewModel: QuotesViewModel
 
     override fun onCreateView(
@@ -47,16 +44,19 @@ class QuotesFragment : Fragment(), KodeinAware {
 //                context?.toast(it.size.toString())
 //            })
 //        }
+
         bindUI()
 
     }
 
     private fun bindUI() = Coroutines.main {
         progress_bar_quotes.show()
+
         viewModel.quotes.await().observe(viewLifecycleOwner, Observer {
             initRecyclerView(it.toQuoteItem())
-             progress_bar_quotes.hide()
+            progress_bar_quotes.hide()
         })
+
     }
 
     private fun initRecyclerView(toQuoteItem: List<QuoteItem>) {
@@ -73,7 +73,7 @@ class QuotesFragment : Fragment(), KodeinAware {
 
     }
 
-    private fun List<Quote>.toQuoteItem() : List<QuoteItem>{
+    private fun List<Quote>.toQuoteItem(): List<QuoteItem> {
         return this.map {
             QuoteItem(it)
         }
