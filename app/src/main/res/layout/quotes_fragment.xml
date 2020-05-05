@@ -1,21 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.quotes.QuotesFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+<layout>
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.mvvmsampleapp.ui.home.quotes.QuotesViewModel" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_quote"/>
+        tools:context=".ui.home.quotes.QuotesFragment">
 
 
-    <ProgressBar
-        android:id="@+id/progress_bar_quotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_quote"/>
 
-</FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar_quotes"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_connections"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text_no_connections"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="No Connections"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:layout_below="@id/text_no_connections"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:onClick="@{viewmodel::onClickRetry}"
+                android:text="Retry"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+    </FrameLayout>
+</layout>
