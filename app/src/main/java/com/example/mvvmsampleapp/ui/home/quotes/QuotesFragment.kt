@@ -51,7 +51,6 @@ class QuotesFragment : Fragment(), KodeinAware {
 
     private fun bindUI() = Coroutines.main {
         progress_bar_quotes.show()
-
         viewModel.quotes.await().observe(viewLifecycleOwner, Observer {
             initRecyclerView(it.toQuoteItem())
             progress_bar_quotes.hide()

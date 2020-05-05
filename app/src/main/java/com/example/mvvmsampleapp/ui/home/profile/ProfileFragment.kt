@@ -1,6 +1,7 @@
 package com.example.mvvmsampleapp.ui.home.profile
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.example.mvvmsampleapp.databinding.ProfileFragmentBinding
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
+import java.time.LocalDateTime
 
 class ProfileFragment : Fragment(), KodeinAware {
 
@@ -26,6 +28,7 @@ class ProfileFragment : Fragment(), KodeinAware {
     ): View? {
         val binding : ProfileFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.profile_fragment, container, false)
         _viewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
+        Log.d("clock", LocalDateTime.now().toString())
         binding.viewmodel = _viewModel
         binding.lifecycleOwner = this
         return binding.root
